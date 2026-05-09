@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-navy-950: #050810;
+  --color-navy-900: #0a0f1a;
+  --color-navy-850: #0f1624;
+  --color-navy-800: #141d2e;
+  /* Mature gold — warm on black, not neon */
+  --color-gold-50: #faf6e7;
+  --color-gold-200: #e3d28a;
+  --color-gold-300: #d4bc5c;
+  --color-gold-400: #c9a227;
+  --color-gold-500: #b08d1f;
+  --color-gold-600: #8a6f18;
+  --color-gold-700: #6b5614;
+  --color-gold-900: #2d2409;
+  --color-gold-950: #141009;
+  --animate-ambient: ambient-shift 16s ease-in-out infinite;
+  --animate-ambient-slow: ambient-shift 22s ease-in-out infinite reverse;
+}
+
+@keyframes ambient-shift {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04) translate(1%, -1%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  background-color: var(--color-navy-950);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 100% -20%, rgba(201, 162, 39, 0.09), transparent 50%),
+    radial-gradient(ellipse 90% 70% at 0% 100%, rgba(139, 92, 246, 0.06), transparent 45%),
+    linear-gradient(180deg, #060a14 0%, #050810 40%, #04060c 100%);
+  color: #f8fafc;
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: rgba(201, 162, 39, 0.35);
+  color: #fffef8;
+}
+
+#app {
+  min-height: 100svh;
+  min-height: 100dvh;
+  min-width: 0;
+}
