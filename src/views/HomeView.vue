@@ -47,8 +47,8 @@ const skills = [
         Intelligent automation, dependable networks and creative production.
       </h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
-        I am Brian Waweru—a specialist across AI-driven automation, computer network analysis and physical
-        print and framing. I build bridges between craft, software, and infrastructure.
+        We are a tech firm established in 2026, specializing in AI-driven automation, computer network analysis and physical
+        print and framing. We build bridges between craft, software, and infrastructure.
       </p>
       <div class="mt-10 flex flex-wrap gap-3 sm:gap-4">
         <RouterLink
