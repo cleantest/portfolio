@@ -1,35 +1,34 @@
 <script setup>
 const services = [
   {
+    title: 'Fullstack web development',
+    tag: 'Development',
+    points: [
+      'Building responsive and scalable web applications using modern frontend and backend technologies.',
+      'Developing secure APIs, databases, and authentication systems for real-world applications.',
+      'Strong attention to performance, usability, maintainability, and clean architecture.',
+    ],
+  },
+  {
     title: 'AI automation',
     tag: 'Systems',
     points: [
-      'Automating repetitive tasks with scripts, APIs, and AI tools.',
-      'Connecting spreadsheets, inboxes, and apps into one flow.',
-      'Practical guardrails: validation, logging, and human review where it matters.',
+      'Automating repetitive workflows using scripts, APIs, and AI-powered tools.',
+      'Integrating applications, spreadsheets, and services into efficient automated processes.',
+      'Implementing validation, monitoring, and structured workflows for reliable automation.',
     ],
   },
   {
-    title: 'Computer network analyst',
-    tag: 'Infrastructure',
+    title: 'Network Infrastructure',
+    tag: 'Computer networks',
     points: [
-      'LAN/Wi‑Fi design, performance checks, and fault isolation.',
-      'Security-minded review of devices, segmentation, and access.',
-      'Clear documentation so teams can operate with confidence.',
-    ],
-  },
-  {
-    title: 'Photo framing & printing',
-    tag: 'Production',
-    points: [
-      'Custom framing, mounting, and presentation finishes.',
-      'Large-format and photo-quality prints for events and décor.',
-      'Colour-accurate workflows from file to physical output.',
+      'Knowledge of LAN/Wi-Fi networking concepts, troubleshooting, and connectivity analysis.',
+      'Understanding of network segmentation, device communication, and access management fundamentals.',
+      'Clear and organized documentation to support system visibility and maintenance.',
     ],
   },
 ]
 </script>
-
 <template>
   <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
     <div

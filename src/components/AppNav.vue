@@ -10,7 +10,10 @@ const links = [
   { to: '/', label: 'Home', name: 'home' },
   { to: '/services', label: 'Services', name: 'services' },
   { to: '/portfolio', label: 'Portfolio', name: 'portfolio' },
+  { to: '/prices', label: 'Pricing', name: 'prices' },
+
   { to: '/contact', label: 'Contact', name: 'contact' },
+
 ]
 
 watch(

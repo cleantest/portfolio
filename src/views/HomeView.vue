@@ -1,23 +1,33 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
+
+const flipped = ref(null)
 
 const skills = [
   {
+    title: 'Fullstack web development',
+    desc: 'Building responsive, scalable, and secure web applications with modern frontend and backend technologies.',
+    video: null, // replace with: new URL('../assets/web.mp4', import.meta.url).href
+    poster: new URL('../assets/huy.jpg', import.meta.url).href,
+  },
+  {
+    title: 'Cyber security',
+    desc: 'Understanding of security fundamentals, secure web practices, threat awareness, and system hardening concepts.',
+    video: null, // replace with: new URL('../assets/cyber.mp4', import.meta.url).href
+    poster: new URL('../assets/uy.jpg', import.meta.url).href,
+  },
+  {
     title: 'AI automation',
-    desc: 'Workflows, integrations, and durable systems that reduce turnaround time in businesses.',
-    icon: 'ai',
-  },
-  {
-    title: 'Networks & systems',
-    desc: 'Design, troubleshooting, and analysis for reliable connectivity and secure operations.',
-    icon: 'net',
-  },
-  {
-    title: 'Print & framing',
-    desc: 'Quality photo framing, large-format printing, and finishing for homes, offices, and retail.',
-    icon: 'frame',
+    desc: 'Creating automated workflows, integrations, and AI-assisted systems to improve efficiency and reduce manual work.',
+    video: null, // replace with: new URL('../assets/ai.mp4', import.meta.url).href
+    poster: new URL('../assets/bv.jpg', import.meta.url).href,
   },
 ]
+
+function toggle(index) {
+  flipped.value = flipped.value === index ? null : index
+}
 </script>
 
 <template>
@@ -34,10 +44,9 @@ const skills = [
       aria-hidden="true"
     />
 
+    <!-- Profile section -->
     <section class="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
-      <p
-        class="mb-4 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-gold-300/95"
-      >
+      <p class="mb-4 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-gold-300/95">
         <span class="h-1.5 w-1.5 rounded-full bg-gold-400 shadow-[0_0_12px_rgba(201,162,39,0.6)]" />
         Profile
       </p>
@@ -72,59 +81,177 @@ const skills = [
       </div>
     </section>
 
-    <section class="relative mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-      <div class="flex flex-wrap items-end gap-4">
-        <h2 class="text-2xl font-bold text-white sm:text-3xl">Skillset</h2>
-        <span
-          class="hidden h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent sm:block sm:min-w-[120px]"
-          aria-hidden="true"
-        />
-      </div>
-      <p class="mt-2 max-w-xl text-slate-400">
-        A concise snapshot of what I deliver for clients and collaborators.
-      </p>
-      <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <li
-          v-for="s in skills"
+    <!-- Skills cards -->
+    <section class="skills-section">
+      <div class="skills-row">
+        <div
+          v-for="(s, i) in skills"
           :key="s.title"
-          class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1624]/85 p-6 shadow-xl backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-gold-500/35 hover:shadow-[0_20px_50px_-12px_rgba(201,162,39,0.15)]"
+          class="flip-wrapper"
+          @click="toggle(i)"
         >
-          <div
-            class="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gold-400/10 blur-2xl transition group-hover:bg-gold-400/20"
-            aria-hidden="true"
-          />
-          <div
-            class="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold-500/25 via-gold-600/10 to-violet-500/15 text-gold-200 ring-1 ring-gold-400/20"
-          >
-            <svg v-if="s.icon === 'frame'" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.75"
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14"
+          <div class="flip-inner" :class="{ flipped: flipped === i }">
+            <!-- Front -->
+            <div class="flip-face flip-front">
+              <video
+                v-if="s.video"
+                :src="s.video"
+                :poster="s.poster"
+                class="card-video"
+                autoplay
+                muted
+                loop
+                playsinline
               />
-            </svg>
-            <svg v-else-if="s.icon === 'ai'" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.75"
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
-            <svg v-else class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.75"
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-              />
-            </svg>
+              <img v-else :src="s.poster" :alt="s.title" class="card-video" />
+              <div class="card-overlay" />
+              <div class="card-bottom">
+                <h3>{{ s.title }}</h3>
+                <button class="plus-btn" aria-label="Learn more">+</button>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="flip-face flip-back">
+              <p>{{ s.desc }}</p>
+            </div>
           </div>
-          <h3 class="relative text-lg font-semibold text-white">{{ s.title }}</h3>
-          <p class="relative mt-2 text-sm leading-relaxed text-slate-400">{{ s.desc }}</p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+.skills-section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.skills-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Flip card */
+.flip-wrapper {
+  flex: 1;
+  height: 220px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-front {
+  background: #0a0f1a;
+}
+
+.flip-back {
+  background: rgba(201, 162, 39, 0.08);
+  border-color: rgba(201, 162, 39, 0.45);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+/* Video / poster fills the front */
+.card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark gradient so text is readable */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+}
+
+/* Bottom bar: title left, + right */
+.card-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card-bottom h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.plus-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201, 162, 39, 0.7);
+  background: rgba(0, 0, 0, 0.45);
+  color: #e8d5a3;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.plus-btn:hover {
+  background: rgba(201, 162, 39, 0.2);
+  border-color: rgba(201, 162, 39, 1);
+}
+
+.flip-back p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .skills-row {
+    flex-direction: column;
+  }
+
+  .flip-wrapper {
+    height: 180px;
+  }
+}
+</style>

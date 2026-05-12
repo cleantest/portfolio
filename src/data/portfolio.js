@@ -4,9 +4,8 @@ export const portfolioItems = [
   {
     brand: 'Hillbrook School',
     initials: 'CH',
-    sector: 'Education',
-    tags: ['Networks'],
-    summary: 'Multi-site hotel group with unstable guest Wi‑Fi and opaque traffic paths.',
+    tags: ['Fullstack development'],
+    summary: 'Website design and build enhancing social presence and professionalism.',
     deliverables: [
       'Documented VLAN layout and moved IoT devices off the guest SSID.',
       'Tuned access-point placement and channel plan for two flagship properties.',
