@@ -1,30 +1,32 @@
 <script setup>
 const services = [
   {
-    title: 'Fullstack web development',
+    title: 'Custom Websites & Web Applications',
     tag: 'Development',
     points: [
-      'Building responsive and scalable web applications using modern frontend and backend technologies.',
-      'Developing secure APIs, databases, and authentication systems for real-world applications.',
-      'Strong attention to performance, usability, maintainability, and clean architecture.',
+'Business websites and portfolio sites',
+'Client portals and dashboards',
+'Fast, responsive, mobile-first design',
+'Deployment, hosting, and ongoing support',
     ],
   },
   {
-    title: 'AI automation',
+    title: 'Technical Consulting',
     tag: 'Systems',
     points: [
-      'Automating repetitive workflows using scripts, APIs, and AI-powered tools.',
-      'Integrating applications, spreadsheets, and services into efficient automated processes.',
-      'Implementing validation, monitoring, and structured workflows for reliable automation.',
+      'Software and infrastructure recommendations.',
+      'Technology strategy and planning.',
+      'Security and best-practice reviews',
+      'Performance optiization',
     ],
   },
   {
-    title: 'Network Infrastructure',
+    title: 'IT Systems & Network Solutions',
     tag: 'Computer networks',
     points: [
-      'Knowledge of LAN/Wi-Fi networking concepts, troubleshooting, and connectivity analysis.',
-      'Understanding of network segmentation, device communication, and access management fundamentals.',
-      'Clear and organized documentation to support system visibility and maintenance.',
+      'Small business network setup.',
+      'Wi-Fi optimization and troubleshooting.',
+      'Device and user access management.',
     ],
   },
 ]
@@ -32,22 +34,19 @@ const services = [
 <template>
   <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
     <div
-      class="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(201,162,39,0.12),transparent_65%)] blur-2xl"
+      class="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full blur-2xl"
+      style="background: radial-gradient(circle, rgba(217,164,65,0.25), transparent 65%);"
       aria-hidden="true"
     />
 
-    <p
-      class="relative inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-gold-300/95"
-    >
-      <span class="h-1 w-8 rounded-full bg-gradient-to-r from-gold-600 to-gold-300" />
+    <p class="relative inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em]" style="color: #B9803A;">
+      <span class="h-1 w-8 rounded-full" style="background: linear-gradient(to right, #B9803A, #D9A441);" />
       Services
     </p>
-    <h1
-      class="relative mt-3 bg-gradient-to-r from-white to-gold-200/80 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
-    >
+    <h1 class="relative mt-3 text-4xl font-bold tracking-tight sm:text-5xl" style="color: #241B0C;">
       What we offer
     </h1>
-    <p class="relative mt-4 max-w-2xl text-lg text-slate-400">
+    <p class="relative mt-4 max-w-2xl text-lg" style="color: #5C5036;">
       Three focused practice areas—each backed by hands-on delivery and attention to detail.
     </p>
 
@@ -55,27 +54,30 @@ const services = [
       <article
         v-for="(svc, i) in services"
         :key="svc.title"
-        class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0f1624]/95 p-8 shadow-xl transition hover:border-gold-500/30 hover:shadow-[0_24px_48px_-16px_rgba(201,162,39,0.12)]"
+        class="group relative flex flex-col overflow-hidden rounded-2xl p-8 shadow-md transition"
+        style="background: #FBF6EA; border: 1.5px solid rgba(201,162,79,0.35);"
+        @mouseover="$el.style"
       >
         <div
-          class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gold-500/50 to-transparent opacity-0 transition group-hover:opacity-100"
+          class="pointer-events-none absolute inset-x-0 top-0 h-1 opacity-0 transition group-hover:opacity-100"
+          style="background: linear-gradient(to right, transparent, #D9A441, transparent);"
           aria-hidden="true"
         />
         <span
-          class="absolute right-6 top-6 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-200 ring-1 ring-gold-400/20"
+          class="absolute right-6 top-6 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
+          style="background: rgba(217,164,65,0.15); color: #B9803A; box-shadow: inset 0 0 0 1px rgba(201,162,79,0.35);"
         >
           {{ svc.tag }}
         </span>
-        <span
-          class="bg-gradient-to-br from-gold-500/25 to-transparent bg-clip-text text-5xl font-bold text-transparent"
-        >
+        <span class="text-5xl font-bold" style="color: rgba(185,128,58,0.3);">
           {{ String(i + 1).padStart(2, '0') }}
         </span>
-        <h2 class="mt-4 text-xl font-bold text-white sm:text-2xl">{{ svc.title }}</h2>
-        <ul class="mt-6 flex flex-1 flex-col gap-3 text-slate-400">
-          <li v-for="p in svc.points" :key="p" class="flex gap-3 text-sm leading-relaxed">
+        <h2 class="mt-4 text-xl font-bold sm:text-2xl" style="color: #241B0C;">{{ svc.title }}</h2>
+        <ul class="mt-6 flex flex-1 flex-col gap-3">
+          <li v-for="p in svc.points" :key="p" class="flex gap-3 text-sm leading-relaxed" style="color: #5C5036;">
             <span
-              class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 shadow-[0_0_8px_rgba(201,162,39,0.45)]"
+              class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+              style="background: linear-gradient(to bottom right, #D9A441, #B9803A); box-shadow: 0 0 6px rgba(217,164,65,0.5);"
             />
             {{ p }}
           </li>

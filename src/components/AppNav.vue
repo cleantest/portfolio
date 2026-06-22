@@ -39,19 +39,17 @@ function linkIcon(name) {
 
 <template>
   <header
-    class="sticky top-0 z-50 border-b border-gold-900/50 bg-[#050810]/90 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-md"
+    class="sticky top-0 z-50 backdrop-blur-md"
+    style="border-bottom: 1px solid rgba(201,162,79,0.4); background: rgba(251,246,234,0.88); box-shadow: 0 4px 24px rgba(185,128,58,0.1);"
   >
-    <div
-      class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:gap-4 sm:px-6 sm:py-4"
-    >
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:gap-4 sm:px-6 sm:py-4">
       <RouterLink
         to="/"
-        class="flex min-w-0 max-w-[65%] items-center gap-2 outline-none ring-gold-400/40 focus-visible:ring-2 sm:max-w-none sm:gap-3"
+        class="flex min-w-0 max-w-[65%] items-center gap-2 outline-none sm:max-w-none sm:gap-3"
+        style="color: #241B0C;"
       >
         <AppLogo class="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
-        <span
-          class="truncate text-base font-semibold tracking-tight text-white sm:text-xl"
-        >
+        <span class="truncate text-base font-semibold tracking-tight sm:text-xl" style="color: #241B0C;">
           Mad Hive.Inc
         </span>
       </RouterLink>
@@ -62,23 +60,15 @@ function linkIcon(name) {
           v-for="link in links"
           :key="`desk-${link.to}`"
           :to="link.to"
-          class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 transition hover:bg-gold-500/10 hover:text-gold-200 lg:px-4 lg:text-sm"
-          :class="{
-            'bg-gradient-to-r from-gold-500/20 to-gold-600/10 text-gold-200 ring-1 ring-gold-400/25':
-              route.name === link.name,
-          }"
+          class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition lg:px-4 lg:text-sm"
+          :style="route.name === link.name
+            ? 'background: rgba(217,164,65,0.18); color: #B9803A; box-shadow: inset 0 0 0 1px rgba(201,162,79,0.4);'
+            : 'color: #5C5036;'"
+          :class="{ 'hover:bg-amber-50': route.name !== link.name }"
         >
-          <span
-            class="text-gold-400/80"
-            aria-hidden="true"
-          >
+          <span :style="route.name === link.name ? 'color: #B9803A;' : 'color: #C9A24F;'" aria-hidden="true">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.75"
-                :d="linkIcon(link.name)"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" :d="linkIcon(link.name)" />
             </svg>
           </span>
           {{ link.label }}
@@ -88,7 +78,8 @@ function linkIcon(name) {
       <!-- Mobile menu toggle -->
       <button
         type="button"
-        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-gold-500/25 bg-gold-500/5 text-gold-200 transition hover:bg-gold-500/15 md:hidden"
+        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition md:hidden"
+        style="border: 1.5px solid rgba(201,162,79,0.45); background: rgba(217,164,65,0.08); color: #B9803A;"
         :aria-expanded="menuOpen"
         aria-controls="mobile-nav"
         aria-label="Menu"
@@ -107,27 +98,22 @@ function linkIcon(name) {
     <div
       v-show="menuOpen"
       id="mobile-nav"
-      class="border-t border-gold-900/40 bg-[#050810]/98 md:hidden"
+      class="md:hidden"
+      style="border-top: 1px solid rgba(201,162,79,0.3); background: rgba(251,246,234,0.97);"
     >
       <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-3 py-3 sm:px-6" aria-label="Primary mobile">
         <RouterLink
           v-for="link in links"
           :key="`mob-${link.to}`"
           :to="link.to"
-          class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-slate-300 transition hover:bg-gold-500/10 hover:text-gold-200"
-          :class="{
-            'bg-gradient-to-r from-gold-500/20 to-transparent text-gold-200 ring-1 ring-gold-400/20':
-              route.name === link.name,
-          }"
+          class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider transition"
+          :style="route.name === link.name
+            ? 'background: rgba(217,164,65,0.16); color: #B9803A; box-shadow: inset 0 0 0 1px rgba(201,162,79,0.35);'
+            : 'color: #5C5036;'"
         >
-          <span class="text-gold-400/90" aria-hidden="true">
+          <span :style="route.name === link.name ? 'color: #B9803A;' : 'color: #C9A24F;'" aria-hidden="true">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.75"
-                :d="linkIcon(link.name)"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" :d="linkIcon(link.name)" />
             </svg>
           </span>
           {{ link.label }}

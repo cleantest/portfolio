@@ -12,18 +12,7 @@ export const portfolioItems = [
       'Handover runbook for on-call staff with escalation paths.',
     ],
   },
-  {
-    brand: 'Tiffanys cakes',
-    initials: 'MI',
-    sector: 'Logistics',
-    tags: ['AI automation'],
-    summary: 'High-volume inbound documents and manual reconciliation between email and spreadsheets.',
-    deliverables: [
-      'Built an ingestion flow from shared inbox to structured rows with validation rules.',
-      'Exception queue for low-confidence extractions with human sign-off.',
-      'Saved ~12 hours/week of manual data entry in the operations pod.',
-    ],
-  },
+
   {
     brand: 'Nairobi Tech Hub',
     initials: 'NT',
